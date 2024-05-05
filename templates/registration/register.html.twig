@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row justify-content-center p-5">
+        <div class="col-md-6">
+            <h1>Register</h1>
+
+            {{ form_errors(registrationForm) }}
+
+            {{ form_start(registrationForm, { 'attr': {'class': 'mt-5'} }) }}
+               <div class="mb-3">
+                    {{ form_label(registrationForm.firstname, 'Firstname', { 'label_attr': {'class': 'form-label'} }) }}
+                    {{ form_widget(registrationForm.firstname, { 'attr': {'class': 'form-control'} }) }}
+                </div>
+                  <div class="mb-3">
+                    {{ form_label(registrationForm.lastname, 'Lastname', { 'label_attr': {'class': 'form-label'} }) }}
+                    {{ form_widget(registrationForm.lastname, { 'attr': {'class': 'form-control'} }) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_label(registrationForm.email, 'Email', { 'label_attr': {'class': 'form-label'} }) }}
+                    {{ form_widget(registrationForm.email, { 'attr': {'class': 'form-control'} }) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_label(registrationForm.plainPassword, 'Password', { 'label_attr': {'class': 'form-label'} }) }}
+                    {{ form_widget(registrationForm.plainPassword, { 'attr': {'class': 'form-control'} }) }}
+                </div>
+               
+                <div class="mb-3 form-check">
+                    {{ form_widget(registrationForm.agreeTerms, { 'attr': {'class': 'form-check-input'} }) }}
+                    {{ form_label(registrationForm.agreeTerms, 'Agree to terms', { 'label_attr': {'class': 'form-check-label'} }) }}
+                </div>
+                <button type="submit" class="btn btn-primary">Register</button>
+            {{ form_end(registrationForm) }}
+        </div>
+    </div>
+</div>
+{% endblock %}
