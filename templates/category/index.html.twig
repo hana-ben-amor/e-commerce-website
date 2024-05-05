@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CategoryController!{% endblock %}
+{% block title %}Categories{% endblock %}
 
 {% block body %}
 <style>
@@ -9,12 +9,41 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/user/e-commerce/src/Controller/CategoryController.php</code></li>
-        <li>Your template at <code>C:/Users/user/e-commerce/templates/category/index.html.twig</code></li>
-    </ul>
+ 
+    <h1>List of Categories</h1>
+     
+    </br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cat in categories %}
+            <tr>
+                <td>{{ cat.id }}</td>
+                <td>{{ cat.name }}</td>
+                <td>
+                    <a href="{{ path('app_update_category', {'id': cat.id}) }}" class="btn btn-primary">
+                        Edit
+                    </a>
+                    <a onclick="return confirm('Do you really want do delete this category ?')" href="{{ path('app_delete_category', {'id': cat.id}) }}" class="btn btn-danger">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="3">No categories found for the moment, sorry! ❤️</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('app_new_category') }}" class="btn btn-outline-primary mb-3">
+        Add Category
+    </a>
 </div>
 {% endblock %}

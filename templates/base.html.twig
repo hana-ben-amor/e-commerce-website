@@ -15,6 +15,7 @@
         {% endblock %}
     </head>
     <body>
+        {% block nav %} {{ include('layouts/nav.html.twig') }}{% endblock %}
         {% block body %}{% endblock %}
     </body>
 </html>
