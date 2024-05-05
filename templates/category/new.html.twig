@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div>
+    <div class="container">
+        <div class="row justify-content-center p-5">
+        <div class="col-md-6">
+            <h1>New Category</h1>
+
+            {{ form_errors(form) }}
+        <div class="form">
+            {{ form_start(form, { 'attr': {'class': 'mt-5'} }) }}
+            <div class="mb-3">
+            {{ form_label(form.name,'CategoryName', { 'label_attr': {'class': 'form-label'} }) }}
+            {{ form_widget(form.name, { 'attr': {'class': 'form-control'} }) }}
+            </div>
+            <button type="submit" class="btn btn-primary">Add</button>
+
+            {{ form_end(form) }}
+        </div>
+        </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
