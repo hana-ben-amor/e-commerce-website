@@ -4,17 +4,59 @@
 
 {% block body %}
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 16px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+ 
+    <h1>List of Users</h1>
+     
+    </br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Roles </th>
+                <th>Action </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.firstname }}</td>
+                <td>{{ user.lastname }}</td>
+                <td>{{ user.email }}</td>
+                <td><ul>
+                        {% for role in user.roles %}
+                            {{ role }}
+                        {% endfor %}
+                    </ul>
+                <td>
+                    {# <a href="{{ path('app_update_category', {'id': cat.id}) }}" class="btn btn-primary">
+                        Edit
+                    </a>
+                    <a onclick="return confirm('Do you really want do delete this category ?')" href="{{ path('app_delete_category', {'id': cat.id}) }}" class="btn btn-danger">
+                        Delete
+                    </a> #}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/user/e-commerce/src/Controller/UserController.php</code></li>
-        <li>Your template at <code>C:/Users/user/e-commerce/templates/user/index.html.twig</code></li>
-    </ul>
+                    <a>edit</a>
+                    <a>delete</a>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="3">No users found for the moment, sorry! ❤️</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {# <a href="{{ path('app_new_category') }}" class="btn btn-outline-primary mb-3">
+        Add Category
+    </a> #}
 </div>
 {% endblock %}
